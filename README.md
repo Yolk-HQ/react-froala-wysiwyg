@@ -4,12 +4,14 @@
 [![npm](https://img.shields.io/npm/dm/react-froala-wysiwyg.svg)](https://www.npmjs.com/package/react-froala-wysiwyg)
 [![npm](https://img.shields.io/npm/l/react-froala-wysiwyg.svg)](https://www.npmjs.com/package/react-froala-wysiwyg)
 
->react-froala-wyswiyg provides React bindings to the Froala WYSIWYG editor VERSION 2.
+react-froala-wyswiyg provides React bindings to the Froala WYSIWYG editor VERSION 2.
+
+_This is a fork of [froala/react-froala-wysiwyg](https://github.com/froala/react-froala-wysiwyg) which is kept up-to-date with fixes needed by [Yolk](https://github.com/Yolk-HQ)._
 
 ## Installation
 
 ```bash
-npm install react-froala-wysiwyg --save
+npm install @yolkai/react-froala-wysiwyg --save
 ```
 
 ## Update editor version
@@ -30,7 +32,7 @@ import ReactDOM from 'react-dom';
 import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
 
-import FroalaEditorComponent from 'react-froala-wysiwyg';
+import FroalaEditorComponent from '@yolkai/react-froala-wysiwyg';
 
 // Import all Froala Editor plugins;
 // import 'froala-editor/js/plugins.pkgd.min.js';
@@ -46,11 +48,11 @@ import FroalaEditorComponent from 'react-froala-wysiwyg';
 // install using "npm install font-awesome --save"
 
 // Include special components if required.
-// import FroalaEditorView from 'react-froala-wysiwyg/FroalaEditorView';
-// import FroalaEditorA from 'react-froala-wysiwyg/FroalaEditorA';
-// import FroalaEditorButton from 'react-froala-wysiwyg/FroalaEditorButton';
-// import FroalaEditorImg from 'react-froala-wysiwyg/FroalaEditorImg';
-// import FroalaEditorInput from 'react-froala-wysiwyg/FroalaEditorInput';
+// import FroalaEditorView from '@yolkai/react-froala-wysiwyg/FroalaEditorView';
+// import FroalaEditorA from '@yolkai/react-froala-wysiwyg/FroalaEditorA';
+// import FroalaEditorButton from '@yolkai/react-froala-wysiwyg/FroalaEditorButton';
+// import FroalaEditorImg from '@yolkai/react-froala-wysiwyg/FroalaEditorImg';
+// import FroalaEditorInput from '@yolkai/react-froala-wysiwyg/FroalaEditorInput';
 
 // Render Froala Editor component.
 ReactDOM.render(<FroalaEditorComponent tag='textarea'/>, document.getElementById('editor'));
