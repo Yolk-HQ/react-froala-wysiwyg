@@ -1,36 +1,34 @@
-// Note that Froala Editor has to be required separately
-import 'froala-editor/css/froala_editor.pkgd.min.css';
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import "froala-editor/css/froala_style.css";
 
-import 'froala-editor/css/froala_style.css';
-import 'file-loader?name=[name].[ext]!./init_on_input.html';
+import dynamic from "next/dynamic";
+import React from "react";
 
+const FroalaEditorInput = dynamic(() => import("../../lib/FroalaEditorInput"), {
+  ssr: false
+});
 
-import FroalaEditorInput from 'react-froala-wysiwyg/FroalaEditorInput';
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-// Render Froala Editor component.
 class EditorComponent extends React.Component {
   constructor() {
     super();
 
     this.state = {
       content: {
-        placeholder: 'I am an input!'
+        placeholder: "I am an input!"
       }
     };
 
     this.handleModelChange = this.handleModelChange.bind(this);
   }
 
-  handleModelChange (model) {
+  handleModelChange(model) {
     this.setState({
       content: model
     });
   }
 
-  render () {
-    return(
+  render() {
+    return (
       <div className="sample">
         <h2>Sample 7: Editor on 'input' tag</h2>
         <FroalaEditorInput
@@ -44,5 +42,4 @@ class EditorComponent extends React.Component {
   }
 }
 
-ReactDOM.render(<EditorComponent/>, document.getElementById('editor'));
-
+export default () => <EditorComponent />;
