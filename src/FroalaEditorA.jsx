@@ -1,4 +1,4 @@
-import FroalaEditorFunctionality from './FroalaEditorFunctionality.jsx';
+import FroalaEditorFunctionality from './FroalaEditorFunctionality';
 import React from 'react';
 
 export default class FroalaEditorA extends FroalaEditorFunctionality {
