@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/dm/react-froala-wysiwyg.svg)](https://www.npmjs.com/package/react-froala-wysiwyg)
 [![npm](https://img.shields.io/npm/l/react-froala-wysiwyg.svg)](https://www.npmjs.com/package/react-froala-wysiwyg)
 
-react-froala-wyswiyg provides React bindings to the Froala WYSIWYG editor VERSION 2.
+react-froala-wyswiyg provides React bindings to the Froala WYSIWYG editor.
 
 _This is a fork of [froala/react-froala-wysiwyg](https://github.com/froala/react-froala-wysiwyg) which is kept up-to-date with fixes needed by [Yolk](https://github.com/Yolk-HQ)._
 
@@ -14,25 +14,17 @@ _This is a fork of [froala/react-froala-wysiwyg](https://github.com/froala/react
 npm install @yolkai/react-froala-wysiwyg --save
 ```
 
-## Update editor version
-```bash
-npm update froala-editor
-```
-
 ## Usage
 
-#### 1. Require and use Froala Editor component inside your application.
-
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-
+import React from "react";
+import ReactDOM from "react-dom";
 
 // Require Editor CSS files.
-import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/css/froala_editor.pkgd.min.css";
 
-import FroalaEditorComponent from '@yolkai/react-froala-wysiwyg';
+import FroalaEditor from "@yolkai/react-froala-wysiwyg";
 
 // Import all Froala Editor plugins;
 // import 'froala-editor/js/plugins.pkgd.min.js';
@@ -55,108 +47,19 @@ import FroalaEditorComponent from '@yolkai/react-froala-wysiwyg';
 // import FroalaEditorInput from '@yolkai/react-froala-wysiwyg/FroalaEditorInput';
 
 // Render Froala Editor component.
-ReactDOM.render(<FroalaEditorComponent tag='textarea'/>, document.getElementById('editor'));
+ReactDOM.render(
+  <FroalaEditor tag="textarea" />,
+  document.getElementById("editor")
+);
 ```
 
-#### 2. Make sure you have the right Webpack settings for loading the CSS files.
-
-#### Webpack <= 3
-```js
-var webpack = require("webpack");
-
-module.exports = {
-  module: {
-    loaders: [
-      {
-        test: /\.jsx$/,
-        loader: 'babel',
-        query: {
-          cacheDirectory: true,
-          presets: ['react','es2015', 'stage-2']
-        }
-      }, {
-        test: /\.css$/,
-        loader: "style-loader!css-loader?root=."
-      },
-      {
-        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/font-woff"
-      }, {
-        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/font-woff"
-      }, {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=application/octet-stream"
-      }, {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "file"
-      }, {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url?limit=10000&mimetype=image/svg+xml"
-      }
-    ]
-  },
-  resolve: {
-    modulesDirectories: ['node_modules']
-  }
-};
-
-```
-
-
-#### Webpack 4
-```js
-var webpack = require("webpack");
-
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.jsx$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            presets: ['react','es2015', 'stage-2']
-          }
-        }
-      }, {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        use: "url-loader?limit=10000&mimetype=application/font-woff"
-      }, {
-        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-        use: "url-loader?limit=10000&mimetype=application/font-woff"
-      }, {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        use: "url-loader?limit=10000&mimetype=application/octet-stream"
-      }, {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        use: "file-loader"
-      }, {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: "url-loader?limit=10000&mimetype=image/svg+xml"
-      }
-    ]
-  },
-  resolve: {
-    modules: ['node_modules']
-  }
-};
-
-```
+_Note: for CSS imports to work, you must configure your application using e.g. [css-loader](https://github.com/webpack-contrib/css-loader) or [next-css](https://github.com/Yolk-HQ/next-css)._
 
 #### Pass properties to the wrapping DOM element
 
 ```js
 <FroalaEditor
-  tag='textarea'
+  tag="textarea"
   config={this.config}
   model={this.state.model}
   onModelChange={this.handleModelChange}
@@ -166,7 +69,6 @@ module.exports = {
 **tag** attr is used to tell on which tag the editor is initialized.
 
 There are special tags: **a**, **button**, **img**, **input**. Do not use them in FroalaEditor component. To initialize the editor on a special tag, use `FroalaEditorA`, `FroalaEditorButton`, `FroalaEditorImg` and `FroalaEditorInput` components.
-
 
 ### Config
 
@@ -184,7 +86,8 @@ config={{
 ```
 
 Aditional option is used:
-* **immediateReactModelUpdate**: (default: false) This option updates the React model as soon as a key is released in the editor. Note that it may affect performances.
+
+- **immediateReactModelUpdate**: (default: false) This option updates the React model as soon as a key is released in the editor. Note that it may affect performances.
 
 ### Events and Methods
 
@@ -210,49 +113,48 @@ Froala events are described in the [events docs](https://froala.com/wysiwyg-edit
 You can pass the custom buttons to the editor by following way:
 
 ```javascript
-<script>
-import Froalaeditor from 'froala-editor';
-Froalaeditor.DefineIcon('alert', {NAME: 'info', SVG_KEY: 'help'});
-  Froalaeditor.RegisterCommand('alert', {
-    title: 'Hello',
-    focus: false,
-    undo: false,
-    refreshAfterCallback: false,
-    callback: function () {
-      alert('Hello!');
-    }
-  });
+import FroalaEditor from "froala-editor";
+FroalaEditor.DefineIcon("alert", { NAME: "info", SVG_KEY: "help" });
+FroalaEditor.RegisterCommand("alert", {
+  title: "Hello",
+  focus: false,
+  undo: false,
+  refreshAfterCallback: false,
+  callback: function() {
+    alert("Hello!");
+  }
+});
 
-  Froalaeditor.DefineIcon('clear', {NAME: 'remove', SVG_KEY: 'remove'});
-  Froalaeditor.RegisterCommand('clear', {
-    title: 'Clear HTML',
-    focus: false,
-    undo: true,
-    refreshAfterCallback: true,
-    callback: function () {
-      this.html.set('');
-      this.events.focus();
-    }
-  });
+FroalaEditor.DefineIcon("clear", { NAME: "remove", SVG_KEY: "remove" });
+FroalaEditor.RegisterCommand("clear", {
+  title: "Clear HTML",
+  focus: false,
+  undo: true,
+  refreshAfterCallback: true,
+  callback: function() {
+    this.html.set("");
+    this.events.focus();
+  }
+});
 
-  Froalaeditor.DefineIcon('insert', {NAME: 'plus', SVG_KEY: 'add'});
-  Froalaeditor.RegisterCommand('insert', {
-    title: 'Insert HTML',
-    focus: true,
-    undo: true,
-    refreshAfterCallback: true,
-    callback: function () {
-      this.html.insert('My New HTML');
-    }
-  });
-  </script>
-  
- ```
- Now you can use these buttons in options:
- ```javascript
- toolbarButtons: [['undo', 'redo' , 'bold'], ['alert', 'clear', 'insert']],
+FroalaEditor.DefineIcon("insert", { NAME: "plus", SVG_KEY: "add" });
+FroalaEditor.RegisterCommand("insert", {
+  title: "Insert HTML",
+  focus: true,
+  undo: true,
+  refreshAfterCallback: true,
+  callback: function() {
+    this.html.insert("My New HTML");
+  }
+});
+```
 
- ```
+Now you can use these buttons in options:
+
+```javascript
+toolbarButtons: [['undo', 'redo' , 'bold'], ['alert', 'clear', 'insert']],
+
+```
 
 ### Model
 
@@ -296,10 +198,11 @@ To achieve one way binding and pass only the initial editor content, simply do n
 Use the content in other places:
 
 ```js
-<input value={this.state.model}/>
+<input value={this.state.model} />
 ```
 
 ### Special tags
+
 You can also use the editor on **img**, **button**, **input** and **a** tags:
 
 ```js
@@ -331,24 +234,25 @@ constructor () {
 }
 ```
 
-* The model can contain a special attribute named **innerHTML** which inserts innerHTML in the element: If you are using 'button' tag, you can specify the button text like this:
+- The model can contain a special attribute named **innerHTML** which inserts innerHTML in the element: If you are using 'button' tag, you can specify the button text like this:
 
 ```js
 this.state = {
-  model: {innerHTML: 'Click Me'}
+  model: { innerHTML: "Click Me" }
 };
 ```
+
 As the button text is modified by the editor, the **innerHTML** attribute from buttonModel model will be modified too.
 
 #### Specific option for special tags
 
-* **reactIgnoreAttrs**: (default: null) This option is an array of attributes that you want to ignore when the editor updates the froalaModel:
+- **reactIgnoreAttrs**: (default: null) This option is an array of attributes that you want to ignore when the editor updates the froalaModel:
 
- ```js
+```js
 config: {
-  reactIgnoreAttrs: ['class', 'id']
+ reactIgnoreAttrs: ['class', 'id']
 },
- ```
+```
 
 ## Manual Instantiation
 
@@ -366,14 +270,7 @@ The object received by the function will contain the following methods:
 
 - **initialize**: Call this method to initialize the Froala Editor
 - **destroy**: Call this method to destroy the Froala Editor
-- **getEditor**: Call this method to retrieve the editor that was created. This method will return *null* if the editor was not yet created
-
-## Using type definition file
-`index.d.ts` file is the type definition file for this repository. It is placed inside lib folder.In order to use it in your code , use the following line:
-```
-///<reference path= "index.d.ts" />
-```
-where path is the location of index.d.ts file.
+- **getEditor**: Call this method to retrieve the editor that was created. This method will return _null_ if the editor was not yet created
 
 ## Displaying HTML
 
@@ -389,7 +286,6 @@ To display content created with the froala editor use the `FroalaEditorView` com
 />
 ```
 
-
 ## License
 
 The `react-froala-wyswiyg` project is under MIT license. However, in order to use Froala WYSIWYG HTML Editor plugin you should purchase a license for it.
@@ -400,11 +296,6 @@ For details please see [License Agreement](http://froala.com/wysiwyg-editor/term
 ## Development environment setup
 
 If you want to contribute to react-froala-wyswiyg, you will first need to install the required tools to get the project going.
-
-#### Prerequisites
-
-* [Node Package Manager](https://npmjs.org/) (NPM)
-* [Git](http://git-scm.com/)
 
 #### Install dependencies
 

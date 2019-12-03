@@ -1,34 +1,37 @@
-// Note that Froala Editor has to be required separately
-import 'froala-editor/css/froala_editor.pkgd.min.css';
-import 'froala-editor/css/froala_style.css';
-import 'file-loader?name=[name].[ext]!./init_on_button.html';
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import "froala-editor/css/froala_style.css";
 
-import FroalaEditorButton from 'react-froala-wysiwyg/FroalaEditorButton';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import dynamic from "next/dynamic";
+import React from "react";
 
-// Render Froala Editor component.
+const FroalaEditorButton = dynamic(
+  () => import("../../lib/FroalaEditorButton"),
+  {
+    ssr: false
+  }
+);
+
 class EditorComponent extends React.Component {
   constructor() {
     super();
 
     this.state = {
       content: {
-        innerHTML: 'Click Me'
+        innerHTML: "Click Me"
       }
     };
 
     this.handleModelChange = this.handleModelChange.bind(this);
   }
 
-  handleModelChange (model) {
+  handleModelChange(model) {
     this.setState({
       content: model
     });
   }
 
-  render () {
-    return(
+  render() {
+    return (
       <div className="sample">
         <h2>Editor on 'button' tag</h2>
         <FroalaEditorButton
@@ -43,5 +46,4 @@ class EditorComponent extends React.Component {
   }
 }
 
-ReactDOM.render(<EditorComponent/>, document.getElementById('editor'));
-
+export default () => <EditorComponent />;

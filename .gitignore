@@ -1,7 +1,8 @@
-**/.DS_STORE
-bower_components
-node_modules
-dist
-modules
-demo/dist/*
-package-lock.json
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next
+
+# Built modules
+lib/
