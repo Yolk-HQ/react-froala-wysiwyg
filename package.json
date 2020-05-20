@@ -1,5 +1,5 @@
 {
-  "name": "react-froala-wysiwyg",
+  "name": "@yolkai/react-froala-wysiwyg",
   "version": "3.0.6",
   "description": "React component for Froala WYSIWYG HTML rich text editor.",
   "main": "lib/FroalaEditor.js",
