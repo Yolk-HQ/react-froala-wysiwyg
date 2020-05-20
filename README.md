@@ -8,6 +8,26 @@ react-froala-wyswiyg provides React bindings to the Froala WYSIWYG editor.
 
 _This is a fork of [froala/react-froala-wysiwyg](https://github.com/froala/react-froala-wysiwyg) which is kept up-to-date with fixes needed by [Yolk](https://github.com/Yolk-HQ)._
 
+## Publishing
+
+This project uses [semantic-release](https://semantic-release.gitbook.io/semantic-release/). Follow the [Angular commit conventions](https://github.com/conventional-changelog/conventional-changelog/tree/816407a39e08179d1726b89d32942607f0756c93/packages/conventional-changelog-angular), and a release will be automatically published after merging code into `master`.
+
+## Updating with upstream changes
+
+To integrate the latest upstream changes from [froala/react-froala-wysiwyg](https://github.com/froala/react-froala-wysiwyg):
+
+```shell
+$ git remote add upstream https://github.com/froala/react-froala-wysiwyg.git
+$ git checkout master
+$ git checkout -b upstream-update
+$ git pull upstream master
+$ # fix conflicts
+$ git commit
+$ git push -u origin HEAD
+```
+
+Then make a pull request from `upstream-update` to `master`.
+
 ## Installation
 
 ```bash
