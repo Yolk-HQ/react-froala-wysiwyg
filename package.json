@@ -46,11 +46,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/froala/react-froala-wysiwyg.git"
+    "url": "git+https://github.com/Yolk-HQ/react-froala-wysiwyg.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/froala/react-froala-wysiwyg/issues"
+    "url": "https://github.com/Yolk-HQ/react-froala-wysiwyg/issues"
   },
-  "homepage": "https://github.com/froala/react-froala-wysiwyg#readme"
+  "homepage": "https://github.com/Yolk-HQ/react-froala-wysiwyg#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
