@@ -1,6 +1,6 @@
 {
   "name": "@yolkai/react-froala-wysiwyg",
-  "version": "3.0.6",
+  "version": "0.0.0-development",
   "description": "React component for Froala WYSIWYG HTML rich text editor.",
   "main": "lib/FroalaEditor.js",
   "author": "Froala Labs",
