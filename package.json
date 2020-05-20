@@ -40,7 +40,7 @@
   "scripts": {
     "build": "babel --presets @babel/preset-env,@babel/preset-react --plugins @babel/plugin-transform-runtime --delete-dir-on-start --copy-files --out-dir lib src",
     "demo": "npm run build && next ./demo",
-    "prepublishOnly": "npm run build"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
