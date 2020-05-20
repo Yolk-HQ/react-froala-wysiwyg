@@ -23,6 +23,7 @@ $ git checkout -b upstream-update
 $ git pull upstream master
 $ # fix conflicts
 $ git commit
+$ # prefix the merge commit message with "feat(*): "
 $ git push -u origin HEAD
 ```
 
