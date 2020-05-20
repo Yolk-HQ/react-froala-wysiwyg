@@ -34,13 +34,15 @@
     "froala-editor": "3.0.6",
     "next": "^9.1.3",
     "prettier": "^1.18.2",
+    "semantic-release": "^17.0.7",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
   "scripts": {
     "build": "babel --presets @babel/preset-env,@babel/preset-react --plugins @babel/plugin-transform-runtime --delete-dir-on-start --copy-files --out-dir lib src",
     "demo": "npm run build && next ./demo",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
