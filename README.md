@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/dm/react-froala-wysiwyg.svg)](https://www.npmjs.com/package/react-froala-wysiwyg)
 [![npm](https://img.shields.io/npm/l/react-froala-wysiwyg.svg)](https://www.npmjs.com/package/react-froala-wysiwyg)
 
-react-froala-wyswiyg provides React bindings to the Froala WYSIWYG editor.
+>react-froala-wyswiyg provides React bindings to the Froala WYSIWYG editor VERSION 3.
 
 _This is a fork of [froala/react-froala-wysiwyg](https://github.com/froala/react-froala-wysiwyg) which is kept up-to-date with fixes needed by [Yolk](https://github.com/Yolk-HQ)._
 
@@ -55,9 +55,15 @@ import FroalaEditor from "@yolkai/react-froala-wysiwyg";
 // Import a language file.
 // import 'froala-editor/js/languages/de.js';
 
+// Import a third-party plugin.
+// import 'froala-editor/js/third_party/image_tui.min.js';
+// import 'froala-editor/js/third_party/embedly.min.js';
+// import 'froala-editor/js/third_party/spell_checker.min.js';
+
 // Include font-awesome css if required.
-// import 'font-awesome/css/font-awesome.css';
 // install using "npm install font-awesome --save"
+// import 'font-awesome/css/font-awesome.css';
+// import 'froala-editor/js/third_party/font_awesome.min.js';
 
 // Include special components if required.
 // import FroalaEditorView from '@yolkai/react-froala-wysiwyg/FroalaEditorView';
@@ -73,7 +79,106 @@ ReactDOM.render(
 );
 ```
 
-_Note: for CSS imports to work, you must configure your application using e.g. [css-loader](https://github.com/webpack-contrib/css-loader) or [next-css](https://github.com/Yolk-HQ/next-css)._
+#### Add editor to UI by passing id to html element
+
+```
+<div  id="editor">
+</div>
+```
+
+#### 2. Make sure you have the right Webpack settings for loading the CSS files.
+
+#### Webpack <= 3
+```js
+var webpack = require("webpack");
+
+module.exports = {
+  module: {
+    loaders: [
+      {
+        test: /\.jsx$/,
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          presets: ['react','es2015', 'stage-2']
+        }
+      }, {
+        test: /\.css$/,
+        loader: "style-loader!css-loader?root=."
+      },
+      {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/font-woff"
+      }, {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/font-woff"
+      }, {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=application/octet-stream"
+      }, {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "file"
+      }, {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url?limit=10000&mimetype=image/svg+xml"
+      }
+    ]
+  },
+  resolve: {
+    modulesDirectories: ['node_modules']
+  }
+};
+
+```
+
+
+#### Webpack 4
+```js
+var webpack = require("webpack");
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.jsx$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            presets: ['react','es2015', 'stage-2']
+          }
+        }
+      }, {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        use: "url-loader?limit=10000&mimetype=application/font-woff"
+      }, {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        use: "url-loader?limit=10000&mimetype=application/font-woff"
+      }, {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        use: "url-loader?limit=10000&mimetype=application/octet-stream"
+      }, {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        use: "file-loader"
+      }, {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: "url-loader?limit=10000&mimetype=image/svg+xml"
+      }
+    ]
+  },
+  resolve: {
+    modules: ['node_modules']
+  }
+};
+
+```
 
 #### Pass properties to the wrapping DOM element
 
