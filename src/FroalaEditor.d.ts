@@ -1,3 +1,4 @@
+import FroalaEditorCore from 'froala-editor';
 import * as React from 'react';
 
 export type ToolbarTextButton =
@@ -83,7 +84,7 @@ export interface Config {
   key: string;
   [key: string]: any;
   events: {
-    initialized(): void;
+    initialized(this: FroalaEditorCore): void;
     'image.error': FroalaErrorHandler | undefined;
     'video.error': FroalaErrorHandler | undefined;
     'file.error': FroalaErrorHandler | undefined;
