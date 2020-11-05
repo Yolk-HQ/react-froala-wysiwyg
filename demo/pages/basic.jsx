@@ -6,7 +6,7 @@ import React from 'react';
 
 const FroalaEditor = dynamic(() => import('../../lib/FroalaEditor'), { ssr: false });
 
-export default () => (
+const Basic = () => (
   <FroalaEditor
     tag="textarea"
     config={{
@@ -20,4 +20,6 @@ export default () => (
       },
     }}
   />
-);
+)
+
+export default Basic;

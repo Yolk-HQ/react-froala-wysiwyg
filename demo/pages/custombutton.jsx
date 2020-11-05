@@ -47,7 +47,7 @@ const FroalaEditor = dynamic(
   }
 );
 
-export default () => {
+const CustomButton = () => {
   return (
     <FroalaEditor
       tag="textarea"
@@ -62,3 +62,5 @@ export default () => {
     />
   );
 };
+
+export default CustomButton;
