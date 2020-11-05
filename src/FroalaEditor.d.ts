@@ -59,7 +59,8 @@ export type ToolbarButton =
   | ToolbarParagraphButton
   | ToolbarRichButton
   | ToolbarMiscButton
-  | '|';
+  | '|'
+  | string;
 
 interface ToolbarButtonsGroup {
   buttons: ToolbarButton[];
