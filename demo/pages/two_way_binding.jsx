@@ -43,4 +43,4 @@ class EditorComponent extends React.Component {
   }
 }
 
-export default () => <EditorComponent />;
+export default EditorComponent;
